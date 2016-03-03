@@ -4,7 +4,7 @@
 * Setup [global npm without sudo]( https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
 
 ```sh
-git clone git@dev.microcash.org:mc-dev-ui/web.git
+git clone git@github.com:microcash/web-ui.git
 cd web
 npm install
 gulp
