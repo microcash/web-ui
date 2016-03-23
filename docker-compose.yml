@@ -1,0 +1,10 @@
+microcash:
+    build: .
+    ports:
+        - '80:8080'
+    volumes:
+        - ./web:/opt/microcash/web:ro
+        - ./wallets:/opt/microcash/wallets
+        - ./network:/opt/microcash/network
+    stdin_open: true
+    tty: true
