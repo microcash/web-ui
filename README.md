@@ -5,7 +5,7 @@
 
 ```sh
 git clone git@github.com:microcash/web-ui.git
-cd web
+cd web-ui
 npm install
 gulp
 ```
