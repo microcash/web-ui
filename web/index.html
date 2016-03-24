@@ -79,8 +79,8 @@
 			</div>
 		</div>
 
-		<div id="page-main" style="display: none" class="pushable">
-			<div class="ui sidebar visible left purple inverted vertical menu">
+		<div id="page-main" style="display: none" >
+			<div class="ui sidebar visible left teal inverted vertical menu fixed">
 				<div class="item">
 					<img class="ui mini image" src="/logo.png">
 				</div>
@@ -89,55 +89,125 @@
 				<a class="item" data-tab="global">Global Transactions</a>
 				<a class="item" data-tab="network">Network Activity</a>
 				<a class="item" data-tab="settings">Settings</a>
-
 				<a class="item" id="component-logout">Logout</a>
 			</div>
 
 			<div class="pusher">
 				<div class="ui basic segment">
 					<div class="ui tab active" data-tab="accounts" id="component-accounts">
-						<h1>Your Accounts</h1>
-						<button class="ui basic button" id="add-account">Add New Account</button>
-						<button class="ui secondary button" id="refresh-accounts">Refresh</button>
-						<table class="ui single line table">
-							<thead>
-								<tr>
-									<th>Address</th>
-									<th>Balance</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
+						<div class="ui basic segment">
+							<div class="ui inverted segment">
+								<h1 class="ui grey inverted header">Your Accounts</h1>
+							</div>
+							<button class="ui basic button" id="add-account">Add New Account</button>
+							<button class="ui secondary button" id="refresh-accounts">Refresh</button>
+							<table class="ui single line table">
+								<thead>
+									<tr>
+										<th>Address</th>
+										<th>Balance</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui modal">
+							<i class="close icon"></i>
+							<div class="header">
+								MicroCash account:
+								<span id="modalAddress"></span>
+							</div>
+							<div class="image content">
+								<div class="ui medium image">
+									<div id="qrcode">QR</div>
+								</div>
+								<div class="description">
+									<div class="ui header">Transaction History:</div>
+									<p></p>
+									<p></p>
+								</div>
+							</div>
+						</div>
 					</div>
 
-					<div class="ui tab" data-tab="send">
-						<h1>Send Money</h1>
+					<div class="ui tab" data-tab="send" id="component-send">
+						<div class="ui inverted segment">
+							<h1 class="ui grey inverted header">Send Money</h1>
+						</div>
 					</div>
 
-					<div class="ui tab" data-tab="global">
-						<h1>Global MicroCash Transaction Activity</h1>
+					<div class="ui tab" data-tab="global" id="component-global">
+						<div class="ui inverted segment">
+							<h1 class="ui grey inverted header">Global MicroCash Transaction Activity</h1>
+						</div>
+
 						<div class='boxall'>
 							<div class='header'>Last Transactions</div>
 							<div class='body'></div>
 						</div>
 					</div>
 
-					<div class="ui tab" data-tab="network">
-						<h1>Network Activity</h1>
+					<div class="ui tab" data-tab="network" id="component-network">
+						<div class="ui inverted segment">
+							<h1 class="ui grey inverted header">Network Activity</h1>
+						</div>
+
 						<div class='boxall'>
 							<div class='header'>Connected Nodes</div>
 							<div class='body'></div>
 						</div>
 					</div>
 
-					<div class="ui tab" data-tab="settings">
-						<h1>MicroCash Node Configuration</h1>
+					<div class="ui tab" data-tab="settings" id="component-settings">
+						<div class="ui inverted segment">
+							<h1 class="ui grey inverted header">MicroCash Node Configuration</h1>
+						</div>
+						<div class="ui label">memory usage:	 <div class="detail" id="memUsage">Unknown</div>kb</div>
+
+						<div class="ui top attached tabular menu">
+							<a class="item active" data-tab="0">Primary
+								<div class="ui label nodeStatus">Status</div>
+							</a>
+							<a class="item" data-tab="1">Secondary
+								<div class="ui label nodeStatus">Status</div>
+							</a>
+							<a class="item" data-tab="2">Tertiary
+								<div class="ui label nodeStatus">Status</div>
+							</a>
+						</div>
+						<div class="ui bottom attached tab segment active" data-tab="0">
+							<button class="ui  button refresh-p2pinfo nodeEnable" data-nodeId="0" >Enable</button>
+							<button class="ui  button refresh-p2pinfo nodeDisable" data-nodeId="0" >Disable</button>
+							<h4>Log:</h4>
+							<button class="ui secondary button refresh-p2pinfo" id="refresh-logs">Refresh</button>
+							<pre id="log0">Example log</pre>
+						</div>
+
+						<div class="ui bottom attached tab segment " data-tab="1">
+							<button class="ui  button refresh-p2pinfo nodeEnable" data-nodeId="1" >Enable</button>
+							<button class="ui  button refresh-p2pinfo nodeDisable" data-nodeId="1">Disable</button>
+							<h4>Log:</h4>
+							<button class="ui secondary button refresh-p2pinfo" id="refresh-logs">Refresh</button>
+							<pre id="log1">Example log</pre>
+						</div>
+
+
+						<div class="ui bottom attached tab segment" data-tab="2">
+							<button class="ui button refresh-p2pinfo nodeEnable" data-nodeId="2" >Enable</button>
+							<button class="ui button refresh-p2pinfo nodeDisable" data-nodeId="2">Disable</button>
+
+
+							<h4>Log:</h4>
+							<button class="ui secondary button refresh-p2pinfo" id="refresh-logs">Refresh</button>
+							<pre id="log2">Example log</pre>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="jquery.min.js"></script>
+		<script src="qrcode.js"></script>
 		<script src="semantic.min.js"></script>
 		<script src="script.js"></script>
 	</body>
