@@ -28,6 +28,7 @@ var pages = {
           .done(function () {
             app.credentials.remember(credentials)
             app.components['accounts'].refresh()
+            app.components['settings'].refresh()
             app.switchPage('main')
           })
           .fail(function () {
@@ -64,6 +65,7 @@ var pages = {
           .done(function () {
             app.credentials.remember(credentials)
             app.components['accounts'].refresh()
+            app.components['settings'].refresh()
             app.switchPage('main')
           })
           .fail(function () {
@@ -76,6 +78,7 @@ var pages = {
   },
   main: function (page) {
     $('.ui.sidebar.menu [data-tab]', page).tab()
+    $('.menu .item', page).tab()
   }
 }
 
@@ -95,6 +98,11 @@ var components = {
               return '<tr><td>' + account.address + '</td><td>' + account.balance + '</td></tr>'
             }).join('\n')
           )
+          $('tr td:first-child', com).click(function () {
+            $('#qrcode').empty().qrcode($(this).text())
+            $('#modalAddress').text($(this).text())
+            $('.ui.modal').modal('show')
+          })
         })
     }
     $('#add-account', com).click(function () {
@@ -109,6 +117,59 @@ var components = {
     })
     $('#refresh-accounts', com).click(function () {
       app.animate(this, self.refresh())
+    })
+    $('#callmodal', com).click(function () {
+      $('#qrcode').empty()
+      $('#qrcode').qrcode('DemoQR')
+      $('.ui.modal').modal('show')
+    })
+  },
+  settings: function (com) {
+    var self = this
+    self.refresh = function () {
+      app.settings.logs()
+        .done(function (data) {
+          for (var i = 0; i < data.servers.length; i++) {
+            var e = data.servers[i].logs
+            $('#log' + i, com).text($.map(e, function (log) {
+              var d = new Date(log.time * 1000)
+              return '[' + d.toUTCString() + '] -' + log.txt
+            }).join('\n'))
+          }
+        })
+      app.settings.nodeStatus()
+        .done(function (data) {
+          $('#memUsage', com).text('' + data.memorykb + '')
+          $('.nodeStatus', com).each(function (index) {
+            data.servers[index].on == 1
+              ? $(this).text('Online').addClass('green').removeClass('red')
+              : $(this).text('Offline').addClass('red').removeClass('green')
+          })
+
+          $('.nodeEnable', com).each(function (index) {
+            data.servers[index].on == 1
+              ? $(this).hide()
+              : $(this).show()
+          })
+
+          $('.nodeDisable', com).each(function (index) {
+            data.servers[index].on == 0
+              ? $(this).hide()
+              : $(this).show()
+          })
+        })
+    }
+
+    $('.nodeEnable', com).click(function () {
+      app.animate(this,
+        app.settings.nodeEnable($(this).attr('data-nodeId'), 1))
+    })
+    $('.nodeDisable', com).click(function () {
+      app.animate(this,
+        app.settings.nodeEnable($(this).attr('data-nodeId'), 0))
+    })
+    $('.refresh-p2pinfo', com).click(function () {
+      self.refresh()
     })
   }
 }
@@ -192,6 +253,25 @@ var app = {
       return app.api.callWithCredentials('get_mc_accounts', function (data) {
         return data.accounts
       })
+    }
+  },
+  settings: {
+    logs: function () {
+      return app.api.callWithCredentials('get_p2p_logs', function (data) {
+        return data
+      })
+    },
+    nodeStatus: function () {
+      return app.api.callWithCredentials('get_p2p_info', function (data) {
+        return data
+      })
+    },
+    nodeEnable: function (node, val) {
+      if (val === 0 || val === 1 && node >= 0 && node < 3) {
+        return app.api.callWithCredentials('set_p2p_value?node=' + node + '&v=enable&d=' + val, function (data) {
+          return data
+        })
+      }
     }
   },
   pages: pages,

@@ -16,3 +16,7 @@ body.page-setup > .grid {
 #page-login > .column {
   max-width: 450px !important;
 }
+
+.ui.sidebar.visible ~ .pusher {
+  width: calc(100% - 260px);
+}
