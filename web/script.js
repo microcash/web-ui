@@ -12,11 +12,11 @@ var pages = {
     login.form({
       fields: {
         username: { identifier: 'username', rules: [
-            { type: 'empty', prompt: 'Please enter your username' }
+          { type: 'empty', prompt: 'Please enter your username' }
         ]},
         password: { identifier: 'password', rules: [
-            { type: 'empty', prompt: 'Please enter your password' },
-            { type: 'length[8]', prompt: 'Your password must be at least 8 characters' }
+          { type: 'empty', prompt: 'Please enter your password' },
+          { type: 'length[8]', prompt: 'Your password must be at least 8 characters' }
         ]}
       },
       onSuccess: function () {
@@ -43,16 +43,16 @@ var pages = {
     setup.form({
       fields: {
         username: { identifier: 'username', rules: [
-            { type: 'empty', prompt: 'Please enter your username' },
-            { type: 'length[4]', prompt: 'Your username must be at least 4 characters' }
+          { type: 'empty', prompt: 'Please enter your username' },
+          { type: 'length[4]', prompt: 'Your username must be at least 4 characters' }
         ]},
         password: { identifier: 'pwd', rules: [
-            { type: 'empty', prompt: 'Please enter your password' },
-            { type: 'length[8]', prompt: 'Your password must be at least 8 characters' }
+          { type: 'empty', prompt: 'Please enter your password' },
+          { type: 'length[8]', prompt: 'Your password must be at least 8 characters' }
         ]},
         confirm: { identifier: 'confirm', rules: [
-            { type: 'empty', prompt: 'Please confirm your password' },
-            { type: 'match[pwd]', prompt: 'Passwords must match' }
+          { type: 'empty', prompt: 'Please confirm your password' },
+          { type: 'match[pwd]', prompt: 'Passwords must match' }
         ]}
       },
       onSuccess: function () {
@@ -75,7 +75,7 @@ var pages = {
     })
   },
   main: function (page) {
-    $('.ui.sidebar.menu [data-tab]', page).tab();
+    $('.ui.sidebar.menu [data-tab]', page).tab()
   }
 }
 
@@ -112,7 +112,6 @@ var components = {
     })
   }
 }
-
 
 var app = {
   animate: function (obj, promise) {

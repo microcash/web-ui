@@ -7,87 +7,87 @@
 	</head>
 	<body class="page-loading">
 		<div id="page-loading" class="ui active dimmer">
-			 <div class="ui large text loader">Loading</div>
+			<div class="ui large text loader">Loading</div>
 		</div>
 
 		<div id="page-login" class="ui middle aligned center aligned grid" style="display: none">
-		  <div class="column">
-		    <h2 class="ui teal image header">
-		      <img src="logo.png" class="image">
-		      <div class="content">
-		    	Welcome to your MicroCash node
-		      </div>
-		    </h2>
+			<div class="column">
+				<h2 class="ui teal image header">
+					<img src="logo.png" class="image">
+					<div class="content">
+						Welcome to your MicroCash node
+					</div>
+				</h2>
 				<p>Hi there, friend, please log in to the MicroCash Node and free yourself from financial slavery.... if you dare.</p>
-		    <form class="ui large form">
-		      <div class="ui stacked segment">
-		        <div class="field">
-		          <div class="ui left icon input">
-		            <i class="user icon"></i>
-		            <input type="text" name="username" placeholder="Username">
-		          </div>
-		        </div>
-		        <div class="field">
-		          <div class="ui left icon input">
-		            <i class="lock icon"></i>
-		            <input type="password" name="password" placeholder="Password">
-		          </div>
-		        </div>
-		        <div class="ui fluid large teal submit button">Login</div>
-		      </div>
-		      <div class="ui error message"></div>
-		    </form>
-		  </div>
+				<form class="ui large form">
+					<div class="ui stacked segment">
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text" name="username" placeholder="Username">
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="lock icon"></i>
+								<input type="password" name="password" placeholder="Password">
+							</div>
+						</div>
+						<div class="ui fluid large teal submit button">Login</div>
+					</div>
+					<div class="ui error message"></div>
+				</form>
+			</div>
 		</div>
 
 		<div id="page-setup" class="ui middle aligned center aligned grid" style="display: none">
-		  <div class="column">
-		    <h2 class="ui teal image header">
-		      <img src="logo.png" class="image">
-		      <div class="content">
-		        Welcome to your MicroCash node
-		      </div>
-		    </h2>
+			<div class="column">
+				<h2 class="ui teal image header">
+					<img src="logo.png" class="image">
+					<div class="content">
+						Welcome to your MicroCash node
+					</div>
+				</h2>
 				<p>Since this is the first time you are connecting to your node we need to create an account for you. This account will have full admin priveleges.</p>
 				<p>Simply type the username you want and the password you want and use this next time you log into your node.</p>
 				<p><b>Usernames need to be 4 characters or more. Passwords must be 8 or more characters in length.</b></p>
-		    <form class="ui large form">
-		      <div class="ui stacked segment">
-		        <div class="field">
-		          <div class="ui left icon input">
-		            <i class="user icon"></i>
-		            <input type="text" name="username" placeholder="Username">
-		          </div>
-		        </div>
-		        <div class="field">
-		          <div class="ui left icon input">
-		            <i class="lock icon"></i>
-		            <input type="password" name="pwd" placeholder="Password">
-		          </div>
-		        </div>
-		        <div class="field">
-		          <div class="ui left icon input">
-		            <i class="lock icon"></i>
-		            <input type="password" name="confirm" placeholder="Confirm Password">
-		          </div>
-		        </div>
-		        <div class="ui fluid large teal submit button">Create Account</div>
-		      </div>
+				<form class="ui large form">
+					<div class="ui stacked segment">
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text" name="username" placeholder="Username">
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="lock icon"></i>
+								<input type="password" name="pwd" placeholder="Password">
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="lock icon"></i>
+								<input type="password" name="confirm" placeholder="Confirm Password">
+							</div>
+						</div>
+						<div class="ui fluid large teal submit button">Create Account</div>
+					</div>
 
-		      <div class="ui error message"></div>
-		    </form>
-		  </div>
+					<div class="ui error message"></div>
+				</form>
+			</div>
 		</div>
 
 		<div id="page-main" style="display: none" class="pushable">
 			<div class="ui sidebar visible left purple inverted vertical menu">
-			  <div class="item">
-			    <img class="ui mini image" src="/logo.png">
-			  </div>
-			  <a class="item active" data-tab="accounts">Your Accounts</a>
-			  <a class="item" data-tab="send">Send Money</a>
-			  <a class="item" data-tab="global">Global Transactions</a>
-			  <a class="item" data-tab="network">Network Activity</a>
+				<div class="item">
+					<img class="ui mini image" src="/logo.png">
+				</div>
+				<a class="item active" data-tab="accounts">Your Accounts</a>
+				<a class="item" data-tab="send">Send Money</a>
+				<a class="item" data-tab="global">Global Transactions</a>
+				<a class="item" data-tab="network">Network Activity</a>
 				<a class="item" data-tab="settings">Settings</a>
 
 				<a class="item" id="component-logout">Logout</a>
@@ -95,46 +95,45 @@
 
 			<div class="pusher">
 				<div class="ui basic segment">
-				<div class="ui tab active" data-tab="accounts" id="component-accounts">
-					<!-- <div class="ui basic segment"> -->
+					<div class="ui tab active" data-tab="accounts" id="component-accounts">
 						<h1>Your Accounts</h1>
 						<button class="ui basic button" id="add-account">Add New Account</button>
 						<button class="ui secondary button" id="refresh-accounts">Refresh</button>
 						<table class="ui single line table">
-						  <thead>
-						    <tr>
-						      <th>Address</th>
-						      <th>Balance</th>
-						    </tr>
-						  </thead>
-						  <tbody>
+							<thead>
+								<tr>
+									<th>Address</th>
+									<th>Balance</th>
+								</tr>
+							</thead>
+							<tbody>
 							</tbody>
 						</table>
-					<!-- </div> -->
-				</div>
-
-				<div class="ui tab" data-tab="send">
-					<h1>Send Money</h1>
-				</div>
-
-				<div class="ui tab" data-tab="global">
-					<h1>Global MicroCash Transaction Activity</h1>
-					<div class='boxall'>
-						<div class='header'>Last Transactions</div>
-						<div class='body'></div>
 					</div>
-				</div>
 
-				<div class="ui tab" data-tab="network">
-					<h1>Network Activity</h1>
-					<div class='boxall'>
-						<div class='header'>Connected Nodes</div>
-						<div class='body'></div>
+					<div class="ui tab" data-tab="send">
+						<h1>Send Money</h1>
 					</div>
-				</div>
 
-				<div class="ui tab" data-tab="settings">
-					<h1>MicroCash Node Configuration</h1>
+					<div class="ui tab" data-tab="global">
+						<h1>Global MicroCash Transaction Activity</h1>
+						<div class='boxall'>
+							<div class='header'>Last Transactions</div>
+							<div class='body'></div>
+						</div>
+					</div>
+
+					<div class="ui tab" data-tab="network">
+						<h1>Network Activity</h1>
+						<div class='boxall'>
+							<div class='header'>Connected Nodes</div>
+							<div class='body'></div>
+						</div>
+					</div>
+
+					<div class="ui tab" data-tab="settings">
+						<h1>MicroCash Node Configuration</h1>
+					</div>
 				</div>
 			</div>
 			</div>
