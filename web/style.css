@@ -1,0 +1,18 @@
+body.page-login,
+body.page-setup {
+  background-color: #DADADA;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden !important;
+  min-width: 320px !important;
+}
+
+body.page-login > .grid,
+body.page-setup > .grid {
+  height: 100% !important;
+}
+
+#page-setup > .column,
+#page-login > .column {
+  max-width: 450px !important;
+}
